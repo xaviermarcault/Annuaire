@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<div align="center">
+		<h1>Edit Services</h1>
+		<br />
+		<form action="#" th:action="@{/save/services}" th:object="${services}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Services ID:</td>
+					<td><input type="text" th:field="*{serviceId}" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td>Libellé:</td>
+					<td><input type="text" th:field="*{serviceLibelle}" /></td>
+				</tr>
+				<tr>
+					<td>Descriptif:</td>
+					<td><input type="text" th:field="*{serviceDescriptifs}" /></td>
+				</tr>
+				<tr>
+					<td>Validité:</td>
+					<td><input type="text" th:field="*{serviceValidite}" /></td>
+				</tr>
+				<tr>
+					<td>Acteur:</td>
+					<td><input type="text" th:field="*{acteur.acteurNom}" readonly="readonly"/></td>
+				</tr>
+				<tr>
+				<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

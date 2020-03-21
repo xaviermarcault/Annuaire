@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<div align="center">
+		<h1>Edit Pays</h1>
+		<br />
+		<form action="#" th:action="@{/save/pays}" th:object="${pays}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Pays ID:</td>
+					<td><input type="text" th:field="*{paysId}" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td>Pays Nom:</td>
+					<td><input type="text" th:field="*{paysNom}" /></td>
+				</tr>
+				<tr>
+					<td>Pays code ISO:</td>
+					<td><input type="text" th:field="*{paysIso}" /></td>
+				</tr>
+				<tr>
+				<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

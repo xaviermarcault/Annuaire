@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block> 
+<body>
+<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<div align="center">
+		<h1>Organisations</h1>
+		<button class="btn btn-light"><a href="new/organisation">Ajouter</a></button><br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Numéro</th>
+					<th>Email</th>
+					<th>MDP</th>
+					<th>Question</th>
+					<th>Réponse</th>
+					<th>Tél.</th>
+					<th>Exp.</th>
+					<th>Vidéo</th>
+					<th>Image</th>
+					<th>Site</th>
+					<th>Valid</th>
+					<th>Inscription</th>
+					<th>Catégorie</th>
+					<th>Services</th>
+					<th>Photos</th>
+					<th>Etat</th>
+					<th>Adresse</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="o : ${listOrganisations}">
+					<td th:text="${o.acteurId}">Organisation ID</td>
+					<td th:text="${o.organisationNom}">Nom</td>
+					<td th:text="${o.organisationNumero}">Numéro</td>					
+					<td th:text="${o.acteurEmail}">Email</td>
+					<td th:text="${o.acteurMDP}">MDP</td>
+					<td th:text="${o.acteurQuestion}">Question</td>
+					<td th:text="${o.acteurReponse}">Réponse</td>
+					<td th:text="${o.acteurTel}">Tél.</td>
+					<td th:text="${o.acteurExperience}">Exp.</td>
+					<td th:text="${o.acteurVideo}">Vidéo</td>
+					<td th:text="${o.acteurImage}">Image</td>
+					<td th:text="${o.acteurSite}">Site</td>
+					<td th:text="${o.acteurValid}">Valid</td>
+					<td th:text="${o.acteurInscription}">Inscription</td>
+					<td th:text="${o.categorie.categorieLibelle}">Catégorie</td>
+					<td><select th:field="*{services}">
+							<option th:each="s : ${listServices}"
+								th:text="${s.serviceLibelle}"></option>
+					</select></td>
+					<td><select th:field="*{photo}">
+							<option th:each="p : ${listPhotos}" th:text="${p.photo}"></option>
+
+					</select></td>
+					<td th:text="${o.etat.etatLibelle}">Etat</td>
+
+					<td th:text="${o.adresse.ville.villeNom}">Adresse</td>
+
+
+					<td><a th:href="@{'/edit/organisation/' + ${o.acteurId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{'/delete/organisation/' + ${o.acteurId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<div align="center">
+		<h1>Nouvelle Ville</h1>
+		<br />
+		<form action="#" th:action="@{/save/ville}" th:object="${ville}" method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Ville Nom:</td>
+					<td><input type="text" th:field="*{villeNom}" /></td>
+				</tr>
+				<tr>
+					<td>Ville Code Postal:</td>
+					<td><input type="text" th:field="*{villeCodePostal}" /></td>
+				</tr>
+				<tr>
+					<td>Pays:</td>
+					<td>
+					<select th:field="*{pays}">
+						<option value="">--Pays--
+						<option th:each="p : ${listPays}" th:value="${p.paysId}" th:text="${p.paysNom}"></option>
+					</select>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

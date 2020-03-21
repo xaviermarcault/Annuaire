@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+<div align="center">
+    <h1>Paramètres</h1>
+    <br>
+    <button class="btn btn-light"><a href="new/parametre">Ajouter</a></button>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Paramètre ID</th>
+                <th>Libellé</th>
+                <th>Valeur</th>
+                <th>CRUD</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${listParametres}">
+            	<td th:text="${p.parametreId}">Paramètre ID</td>
+                <td th:text="${p.parametreLibelle}">Libellé</td>
+                <td th:text="${p.parametreValeur}">Valeur</td>
+                <td>
+                	<a th:href="@{'/edit/parametre/' + ${p.parametreId}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/parametre/' + ${p.parametreId}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>

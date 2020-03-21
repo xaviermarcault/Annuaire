@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<div align="center">
+		<h1>Nouvelle Organisation</h1>
+		<form action="#" th:action="@{/save/organisation}" th:object="${organisation}" method="post">
+			<table border="0" cellpading="10">
+				<tr>
+					<td>Nom</td>
+					<td><input type="text" th:field="*{organisationNom}"></td>
+				</tr>
+				<tr>
+					<td>Numéro</td>
+					<td><input type="text" th:field="*{organisationNumero}"></td>
+					
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" th:field="*{acteurEmail}"></td>
+					
+				</tr>
+				<tr>
+					<td>Mot de passe</td>
+					<td><input type="text" th:field="*{acteurMDP}"></td>
+				</tr>
+				<tr>
+					<td>Question</td>
+					<td><input type="text" th:field="*{acteurQuestion}"></td>
+					
+				</tr>
+				<tr>
+					<td>Réponse</td>
+					<td><input type="text" th:field="*{acteurReponse}"></td>
+					
+				</tr>
+				<tr>
+					<td>Téléphone</td>
+					<td><input type="text" th:field="*{acteurTel}"></td>
+				</tr>
+				<tr>
+					<td>Expérience</td>
+					<td><input type="text" th:field="*{acteurExperience}"></td>
+					
+				</tr>
+				<tr>
+					<td>Vidéo</td>
+					<td><input type="text" th:field="*{acteurVideo}"></td>
+					
+				</tr>
+				<tr>
+					<td>Image</td>
+					<td><input type="text" th:field="*{acteurImage}"></td>
+					
+				</tr>
+				<tr>
+					<td>Site</td>
+					<td><input type="text" th:field="*{acteurSite}"></td>
+					
+				</tr>
+				<tr>
+					<td>Validité</td>
+					<td><input type="text" th:field="*{acteurValid}"></td>
+					
+				</tr>
+				<tr>
+					<td>Inscription (YYYY/MM/DD)</td>
+					<td><input type="text" th:field="*{acteurInscription}"></td>
+					
+				</tr>
+				<tr>
+					<td>Catégorie</td>
+					<td><select th:field="*{categorie}">
+							<option value="">--Catégorie--
+							<option th:each="c : ${listCategories}"
+								th:value="${c.categorieId}" th:text="${c.categorieLibelle}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Services</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Galérie photo</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Etat</td>
+					<td><select th:field="*{etat}">
+							<option value="">--Etat--
+							<option th:each="e : ${listEtats}" th:value="${e.etatId}"
+								th:text="${e.etatLibelle}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Adresse</td>
+					<td><select th:field="*{adresse}">
+							<option value="">--Adresse--
+							<option th:each="a : ${listAdresses}" th:value="${a.adresseId}"
+								th:text="${a.adresseRue}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+
+		</form>
+	</div>
+</body>
+</html>
