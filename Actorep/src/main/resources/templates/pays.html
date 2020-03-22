@@ -3,8 +3,11 @@
 	xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="/includes/head"></th:block>
 <body>
-	<button class="btn btn-light"><a href="/backend">Acceuil</a></button>
+	<button class="btn btn-light">
+		<a href="/backend">Acceuil</a>
+	</button>
 	<div align="center">
+	<div class="container mt-5">
 		<h1>Pays</h1>
 		<br>
 		<button class="btn btn-light">
@@ -21,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="p : ${listPays}">
+				<tr th:each="p : ${pagesPays.content}">
 					<td th:text="${p.paysId}">Pays ID</td>
 					<td th:text="${p.paysNom}">Nom</td>
 					<td th:text="${p.paysIso}">Code ISO</td>
@@ -31,6 +34,13 @@
 				</tr>
 			</tbody>
 		</table>
+		<ul class="nav nav-pills">
+			<li th:each="page,status:${pagesNombres}">
+			<a th:class="${status.index==pageCourante}?'btn btn-primary':'btn'" 
+				th:href="@{pays(page=${status.index}, size=${size})}" th:text="${status.index+1}"></a>
+			</li>
+		</ul>
+	</div>
 	</div>
 </body>
 </html>

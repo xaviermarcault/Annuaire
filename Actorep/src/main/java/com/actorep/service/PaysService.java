@@ -3,6 +3,8 @@ package com.actorep.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,11 @@ public class PaysService implements IActorepServicePays {
 	@Override
 	public Collection<Pays> listPays() {
 		return paysRepository.findAll();
+	}
+	
+	@Override
+	public Page<Pays> pagesPays(int page, int size){
+		return paysRepository.findAll(PageRequest.of(page, size));
 	}
 	
 	@Override
