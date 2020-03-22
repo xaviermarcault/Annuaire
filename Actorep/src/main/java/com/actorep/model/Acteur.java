@@ -67,10 +67,10 @@ public class Acteur implements Serializable {
 	private String acteurSite;
 
 	@Column(name="acteur_valid",nullable = false)
-	private boolean acteurValid;
+	private Boolean acteurValid = new Boolean(false);
 
 	@Column(name="acteur_inscription", nullable=false)
-	private Date acteurInscription;
+	private Date acteurInscription = new Date(2020/03/20);
 
 	@ManyToOne
 	@JoinColumn(name = "categorie_Id")
