@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Catégorie</h1>
+		<button class="btn btn-light">
+			<a href="new/categorie">Ajouter</a>
+		</button>
+		<br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Catégroie ID</th>
+					<th>Libellé</th>
+					<th>Valide</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="c : ${listCategories}">
+					<td th:text="${c.categorieId}">Categorie ID</td>
+					<td th:text="${c.categorieLibelle}">Libellé</td>
+					<td th:text="${c.categorieValid}">Valide</td>
+					<td><a th:href="@{'/edit/categorie/' + ${c.categorieId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/categorie/' + ${c.categorieId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Acceuil</a>
+	</button>
+	<div align="center">
+		<h1>Nouvelle Adresse</h1>
+		<br />
+		<form action="#" th:action="@{/save/adresse}" th:object="${adresse}"
+			method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Numéro:</td>
+					<td><input type="text" th:field="*{adresseNumero}" /></td>
+				</tr>
+				<tr>
+					<td>Rue:</td>
+					<td><input type="text" th:field="*{adresseRue}" /></td>
+				</tr>
+				<tr>
+					<td>Ville:</td>
+					<td><select th:field="*{ville}">
+							<option value="">--Ville--
+							<option th:each="v : ${listVilles}" th:value="${v.villeId}"
+								th:text="${v.villeNom}"></option>
+					</select>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

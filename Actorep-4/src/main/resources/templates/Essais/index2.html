@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Backend</a>
+	</button>
+	<center>
+		<h3>Actorep bientôt en ligne ...</h3>
+	</center>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div align="center">
+		<form method="GET" action="res">
+			<table border="0" cellpading="10">
+				<tr>
+					<td><select class="form-control" name="cat">
+							<option value="">Catégorie</option>
+							<option value="">Pays</option>
+					</select></td>
+					<td><input type="search" id="searchSite" name="motCle"
+						th:value="${motCle}" size="50"></td>
+					<td>
+						<button type="submit" class="btn btn-success">GO</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<a href="/affichageOrgaFront">Nos Organisations</a>
+	</div>
+
+	<div>
+		<a href="/affichageServicesFront">Nos Services</a>
+	</div>
+
+	<div>
+		<h3>Ils nous ont rejoints...</h3>
+		<tr th:each="o : ${lastOrganisations}">
+			<td th:text="${o.acteurId}">Organisation ID</td>
+			<td th:text="${o.organisationNom}">Nom</td>
+			<td th:text="${o.organisationNumero}">Numéro</td>
+			<td th:text="${o.acteurEmail}">Email</td>
+			<td><a th:href="@{'/edit/organisation/' + ${o.acteurId}}">Edit</a>
+				&nbsp;&nbsp;&nbsp; <a
+				th:href="@{'/delete/organisation/' + ${o.acteurId}}">Delete</a></td>
+		</tr>
+
+
+
+	</div>
+
+	<div align="center">
+		<h3>Nos dernières propositions :</h3>
+
+		<tr th:each="ser : ${lastServices}">
+			<td th:text="${ser.serviceId}">Services ID</td>
+			<td th:text="${ser.serviceLibelle}">Libellé</td>
+			<td th:text="${ser.serviceDescriptif}">Descriptif</td>
+			<td th:text="${ser.serviceValid}">Validité</td>
+			<!-- <td th:text="${ser.acteur.acteurNom}">Acteur</td> -->
+			<td><a th:href="@{'/edit/services/' + ${ser.serviceId}}">Edit</a>
+				&nbsp;&nbsp;&nbsp; <a
+				th:href="@{'/delete/services/' + ${ser.serviceId}}">Delete</a></td>
+		</tr>
+	</div>
+
+</body>
+</html>

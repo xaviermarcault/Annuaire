@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+
+	<div align="center">
+		<h1>Nos Services</h1>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Services ID</th>
+					<th>Libellé</th>
+					<th>Descriptif</th>
+					<th>Validité</th>
+					<!-- <th>Acteur</th> -->
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ser : ${listServices}">
+					<td th:text="${ser.serviceId}">Services ID</td>
+					<td th:text="${ser.serviceLibelle}">Libellé</td>
+					<td th:text="${ser.serviceDescriptif}">Descriptif</td>
+					<td th:text="${ser.serviceValid}">Validité</td>
+					<!-- <td th:text="${ser.acteur.acteurNom}">Acteur</td> -->
+					<td><a th:href="@{'/edit/services/' + ${ser.serviceId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/services/' + ${ser.serviceId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>

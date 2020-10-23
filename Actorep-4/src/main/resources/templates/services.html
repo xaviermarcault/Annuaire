@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Shop Homepage - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/shop-homepage.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<script type="text/javascript" charset="utf8"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<!-- <a class="navbar-brand" href="#">Start Bootstrap</a> -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="/">Home
+							<span class="sr-only">(current)</span>
+					</a>
+					<li class="nav-item active"><a class="nav-link"
+						href="/backend">BackEndHome</a></li>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/individu">Individu</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/organisation">Organisation</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/adresse">Adresse</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/ville">Ville</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/pays">Pays</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/categorie">Catégorie</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/photo">Photo</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/services">Services</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/etat">Etat</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/employe">Employé(e)</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/role">Rôle</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/parametre">Paramètre</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div align="center">
+				<h1>Services</h1>
+				<button class="btn btn-light">
+					<a href="new/services">Ajouter</a>
+				</button>
+				<br /> <br />
+			</div>
+		</div>
+		<table border="1" cellpadding="10" id="example" class="display"
+			style="width: 100%">
+			<thead>
+				<tr>
+					<th>Services ID</th>
+					<th>Libellé</th>
+					<th>Descriptif</th>
+					<th>Validité</th>
+					<th>Acteur</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ser : ${listServices}">
+					<td th:text="${ser.serviceId}">Services ID</td>
+					<td th:text="${ser.serviceLibelle}">Libellé</td>
+					<td th:text="${ser.serviceDescriptif}">Descriptif</td>
+					<td th:text="${ser.serviceValid}">Validité</td>
+					<td th:text="${ser.acteur.acteurId}">Acteur</td>
+					<td><a th:href="@{'/edit/services/' + ${ser.serviceId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/services/' + ${ser.serviceId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script>
+		$(document).ready(function() {
+		    $('#example').DataTable();
+		} );
+		</script>
+
+		<div class="col-lg-3">
+
+
+			<!-- /.col-lg-3 -->
+
+			<div class="col-lg-9">
+
+
+				<div class="row"></div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.col-lg-9 -->
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Actorep
+				2020</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

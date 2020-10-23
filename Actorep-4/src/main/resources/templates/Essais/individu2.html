@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Individus</h1>
+		<button class="btn btn-light">
+			<a href="new/individu">Ajouter</a>
+		</button>
+		<br /> <br />
+		<table border="1" cellpadding="10" class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Nom de naissance</th>
+					<th>Email</th>
+					<th>MDP</th>
+					<th>Question</th>
+					<th>Réponse</th>
+					<th>Tél.</th>
+					<th>Exp.</th>
+					<th>Vidéo</th>
+					<th>Image</th>
+					<th>Site</th>
+					<th>Valid</th>
+					<th>Inscription</th>
+					<th>Catégorie</th>
+					<th>Services</th>
+					<th>Photos</th>
+					<th>Etat</th>
+					<th>Adresse</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="i : ${listIndividus}">
+					<td th:text="${i.acteurId}">Individu ID</td>
+					<td th:text="${i.nom}">Nom</td>
+					<td th:text="${i.prenom}">Prénom</td>
+					<td th:text="${i.nomNaissance}">Nom de naissance</td>
+					<td th:text="${i.acteurEmail}">Email</td>
+					<td th:text="${i.acteurMDP}">MDP</td>
+					<td th:text="${i.acteurQuestion}">Question</td>
+					<td th:text="${i.acteurReponse}">Réponse</td>
+					<td th:text="${i.acteurTel}">Tél.</td>
+					<td th:text="${i.acteurExperience}">Exp.</td>
+					<td th:text="${i.acteurVideo}">Vidéo</td>
+					<td th:text="${i.acteurImage}">Image</td>
+					<td th:text="${i.acteurSite}">Site</td>
+					<td th:text="${i.acteurValid}">Valid</td>
+					<td th:text="${i.acteurInscription}">Inscription</td>
+					<td th:text="${i.categorie.categorieLibelle}">Catégorie</td>
+					<td><select th:field="*{services}">
+							<option th:each="s : ${listServices}"
+								th:text="${s.serviceLibelle}" value=""></option>
+					</select></td>
+					<td><select th:field="*{photo}">
+							<option th:each="p : ${listPhotos}" th:text="${p.photoUrl}"
+								value=""></option>
+					</select></td>
+
+					<td th:text="${i.etat.etatLibelle}">Etat</td>
+
+					<td th:text="${i.adresse.ville.villeNom}">Adresse</td>
+
+					<td><a th:href="@{'/edit/individu/' + ${i.acteurId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/individu/' + ${i.acteurId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

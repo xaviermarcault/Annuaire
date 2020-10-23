@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Acceuil</a>
+	</button>
+	<div align="center">
+		<h1>Nouvelle Photo</h1>
+		<br />
+		<form action="#" th:action="@{/save/photo}" th:object="${photo}"
+			method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Photo url:</td>
+					<td><input type="text" th:field="*{photoUrl}" /></td>
+				</tr>
+				<tr>
+					<td>Acteur:</td>
+					<td><select th:field="*{acteur}">
+							<option value="">--Acteur--</option>
+							<option th:each="a : ${listActeurs}" th:value="${a.acteurId}"
+								th:text="${a.acteurNom}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

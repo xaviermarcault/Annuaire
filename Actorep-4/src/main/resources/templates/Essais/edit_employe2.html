@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Acceuil</a>
+	</button>
+	<div align="center">
+		<h1>Edit Employé(e)</h1>
+		<br />
+		<form action="#" th:action="@{/save/employe}" th:object="${employe}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Employé(e) ID :</td>
+					<td><input type="text" th:field="*{employeId}"
+						readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Nom :</td>
+					<td><input type="text" th:field="*{employeNom}" /></td>
+				</tr>
+				<tr>
+					<td>Prénom :</td>
+					<td><input type="text" th:field="*{employePrenom}" /></td>
+				</tr>
+				<tr>
+					<td>Email :</td>
+					<td><input type="text" th:field="*{employeEmail}" /></td>
+				</tr>
+				<tr>
+					<td>Mot de passe :</td>
+					<td><input type="text" th:field="*{employeMdp}" /></td>
+				</tr>
+				<tr>
+					<td>Question :</td>
+					<td><input type="text" th:field="*{employeQuestion}" /></td>
+				</tr>
+				<tr>
+					<td>Réponse :</td>
+					<td><input type="text" th:field="*{employeReponse}" /></td>
+				</tr>
+				<tr>
+					<td>Role :</td>
+					<td><select th:field="*{role}">
+							<option value="">--Niveau d'administration--
+							<option th:each="r : ${listRoles}" th:value="${r.roleId}"
+								th:text="${r.roleLibelle}"></option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Employe(é)s</h1>
+		<button class="btn btn-light">
+			<a href="new/employe">Ajouter</a>
+		</button>
+		<br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Employé ID</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Email</th>
+					<th>Mot de passe</th>
+					<th>Question</th>
+					<th>Réponse</th>
+					<th>Rôle</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e : ${listEmployes}">
+					<td th:text="${e.employeId}">Employé ID</td>
+					<td th:text="${e.employeNom}">Nom</td>
+					<td th:text="${e.employePrenom}">Prénom</td>
+					<td th:text="${e.employeEmail}">Email</td>
+					<td th:text="${e.employeMdp}">Mot de passe</td>
+					<td th:text="${e.employeQuestion}">Question</td>
+					<td th:text="${e.employeReponse}">Réponse</td>
+					<td th:text="${e.role.roleLibelle}">Rôle</td>
+					<td><a th:href="@{'/edit/employe/' + ${e.employeId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/employe/' + ${e.employeId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

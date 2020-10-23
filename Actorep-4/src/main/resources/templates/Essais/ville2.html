@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Ville</h1>
+		<br>
+		<button class="btn btn-light">
+			<a href="new/ville">Ajouter</a>
+		</button>
+		<br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Ville ID</th>
+					<th>Nom</th>
+					<th>Code ISO</th>
+					<th>Pays</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="v : ${listVilles}">
+					<td th:text="${v.villeId}">Ville ID</td>
+					<td th:text="${v.villeNom}">Nom</td>
+					<td th:text="${v.villeCodePostal}">Code ISO</td>
+					<td th:text="${v.pays.paysNom}">Pays</td>
+					<td><a th:href="@{'/edit/ville/' + ${v.villeId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/ville/' + ${v.villeId}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

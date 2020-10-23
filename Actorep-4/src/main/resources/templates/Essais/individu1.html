@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Shop Homepage - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+
+	<thead>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="#">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item"><a class="nav-link">ID</a></li>
+						<li class="nav-item"><a class="nav-link">Nom</a></li>
+						<li class="nav-item"><a class="nav-link">Prénom</a></li>
+						<li class="nav-item"><a class="nav-link">Nom de
+								naissance</a></li>
+						<li class="nav-item"><a class="nav-link">Email</a></li>
+						<li class="nav-item"><a class="nav-link">Tél.</a></li>
+						<li class="nav-item"><a class="nav-link">Expérience</a></li>
+						<li class="nav-item"><a class="nav-link">Vidéo</a></li>
+						<li class="nav-item"><a class="nav-link">Image</a></li>
+						<li class="nav-item"><a class="nav-link">Site</a></li>
+						<li class="nav-item"><a class="nav-link">Inscription</a></li>
+						<li class="nav-item"><a class="nav-link">Catégorie</a></li>
+						<li class="nav-item"><a class="nav-link">Services</a></li>
+						<li class="nav-item"><a class="nav-link">Photos</a></li>
+						<li class="nav-item"><a class="nav-link">Etat</a></li>
+						<li class="nav-item"><a class="nav-link">Adresse</a></li>
+						<li class="nav-item"><a class="nav-link">CRUD</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Page Content -->
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-lg-3">
+
+					<h1 class="my-4">Shop Name</h1>
+					<div class="list-group">
+						<a href="#" class="list-group-item">Category 1</a> <a href="#"
+							class="list-group-item">Category 2</a> <a href="#"
+							class="list-group-item">Category 3</a>
+					</div>
+
+				</div>
+				<!-- /.col-lg-3 -->
+
+				<div class="col-lg-9">
+
+					<div id="carouselExampleIndicators" class="carousel slide my-4"
+						data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#carouselExampleIndicators" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+							<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner" role="listbox">
+							<div class="carousel-item active">
+								<img class="d-block img-fluid" src="http://placehold.it/900x350"
+									alt="First slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block img-fluid" src="http://placehold.it/900x350"
+									alt="Second slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block img-fluid" src="http://placehold.it/900x350"
+									alt="Third slide">
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleIndicators"
+							role="button" data-slide="prev"> <span
+							class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+							class="sr-only">Previous</span>
+						</a> <a class="carousel-control-next"
+							href="#carouselExampleIndicators" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+					<div class="row">
+						<table border="1" cellpadding="10" class="table">
+							</thead>
+							<tbody>
+								<tr th:each="i : ${listIndividus}">
+									<td th:text="${i.acteurId}">Individu ID</td>
+									<td th:text="${i.nom}">Nom</td>
+									<td th:text="${i.prenom}">Prénom</td>
+									<td th:text="${i.nomNaissance}">Nom de naissance</td>
+									<td th:text="${i.acteurEmail}">Email</td>
+									<td th:text="${i.acteurMDP}">MDP</td>
+									<td th:text="${i.acteurQuestion}">Question</td>
+									<td th:text="${i.acteurReponse}">Réponse</td>
+									<td th:text="${i.acteurTel}">Tél.</td>
+									<td th:text="${i.acteurExperience}">Exp.</td>
+									<td th:text="${i.acteurVideo}">Vidéo</td>
+									<td th:text="${i.acteurImage}">Image</td>
+									<td th:text="${i.acteurSite}">Site</td>
+									<td th:text="${i.acteurValid}">Valid</td>
+									<td th:text="${i.acteurInscription}">Inscription</td>
+									<td th:text="${i.categorie.categorieLibelle}">Catégorie</td>
+									<td><select th:field="*{services}">
+											<option th:each="s : ${listServices}"
+												th:text="${s.serviceLibelle}" value=""></option>
+									</select></td>
+									<td><select th:field="*{photo}">
+											<option th:each="p : ${listPhotos}" th:text="${p.photoUrl}"
+												value=""></option>
+									</select></td>
+
+									<td th:text="${i.etat.etatLibelle}">Etat</td>
+
+									<td th:text="${i.adresse.ville.villeNom}">Adresse</td>
+
+									<td><a th:href="@{'/edit/individu/' + ${i.acteurId}}">Edit</a>
+										&nbsp;&nbsp;&nbsp; <a
+										th:href="@{'/delete/individu/' + ${i.acteurId}}">Delete</a></td>
+								</tr>
+							</tbody>
+						</table>
+
+
+
+
+
+					</div>
+					<!-- /.row -->
+
+				</div>
+				<!-- /.col-lg-9 -->
+
+			</div>
+			<!-- /.row -->
+
+		</div>
+		<!-- /.container -->
+
+		<!-- Footer -->
+		<footer class="py-5 bg-dark">
+			<div class="container">
+				<p class="m-0 text-center text-white">Copyright &copy; Your
+					Website 2019</p>
+			</div>
+			<!-- /.container -->
+		</footer>
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Acceuil</a>
+	</button>
+	<div align="center">
+		<h1>Edit Rôle</h1>
+		<br />
+		<form action="#" th:action="@{/save/role}" th:object="${role}"
+			method="post">
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Rôle ID:</td>
+					<td><input type="text" th:field="*{roleId}"
+						readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Rôle libellé:</td>
+					<td><input type="text" th:field="*{roleLibelle}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-light">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

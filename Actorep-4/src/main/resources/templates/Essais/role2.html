@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+</head>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Rôles</h1>
+		<br>
+		<button class="btn btn-light">
+			<a href="new/role">Ajouter</a>
+		</button>
+		<br />
+		<br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Rôle ID</th>
+					<th>Libellé</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="r : ${listRoles}">
+					<td th:text="${r.roleId}">Rôle ID</td>
+					<td th:text="${r.roleLibelle}">Libellé</td>
+					<td><a th:href="@{'/edit/role/' + ${r.roleId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/role/' + ${r.roleId}}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

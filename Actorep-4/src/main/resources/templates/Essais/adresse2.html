@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="/includes/head"></th:block>
+<body>
+	<button class="btn btn-light">
+		<a href="/backend">Accueil</a>
+	</button>
+	<div align="center">
+		<h1>Adresse</h1>
+		<button class="btn btn-light">
+			<a href="new/adresse">Ajouter</a>
+		</button>
+		<br /> <br />
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Adresse ID</th>
+					<th>Numéro</th>
+					<th>Rue</th>
+					<th>Ville</th>
+					<th>Pays</th>
+					<th>CRUD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="a : ${listAdresses}">
+					<td th:text="${a.adresseId}">Adresse ID</td>
+					<td th:text="${a.adresseNumero}">Numéro</td>
+					<td th:text="${a.adresseRue}">Rue</td>
+					<td th:text="${a.ville.villeNom}">Ville</td>
+					<td th:text="${a.ville.pays.paysNom}">Pays</td>
+					<td><a th:href="@{'/edit/adresse/' + ${a.adresseId}}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a
+						th:href="@{'/delete/adresse/' + ${a.adresseId}}">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
